@@ -40,7 +40,7 @@ function Form() {
             },
         })
             .then((result) => {
-                console.log(result.data);
+                alert("Your interview is successfully scheduled !")
             })
             .catch((error) => {
                 console.log(error);
@@ -57,6 +57,10 @@ function Form() {
                         variant="outlined"
                         name="name"
                         onChange={handleInputChange}
+                        pattern="[a-zA-Z]"
+                        type="text"
+                        autoFocus={true}
+                        required={true}
                     />
                     <br />
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -67,11 +71,13 @@ function Form() {
                             value={selectedDate}
                             onChange={handleDateChange}
                             variant="outlined"
+                            minDate={new Date()}
                             KeyboardButtonProps={{
                                 "aria-label": "change date",
                             }}
                             inputVariant="outlined"
                             name="date"
+                            required={true}
                         />
                     </MuiPickersUtilsProvider>
                     <br />

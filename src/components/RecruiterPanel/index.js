@@ -44,6 +44,7 @@ function RecruiterPanel(props) {
         })
             .then(function (response) {
                 fetchAllApplication();
+                alert("Approved");
             })
             .catch(function (error) {
                 console.log(error);
@@ -62,6 +63,7 @@ function RecruiterPanel(props) {
         })
             .then(function (response) {
                 fetchAllApplication();
+                alert("Rejected");
             })
             .catch(function (error) {
                 console.log(error);
@@ -101,10 +103,10 @@ function RecruiterPanel(props) {
                                 </TableCell>
 
                                 <TableCell align="right">
-                                    <Button onClick={() => handleApprove(row._id)}>
+                                    <Button onClick={() => handleApprove(row._id)} disabled={row.approveStatus === "Approved"?true:false}>
                                         Approve
                                     </Button>
-                                    <Button onClick={() => handleReject(row._id)}>
+                                    <Button onClick={() => handleReject(row._id)} disabled={row.approveStatus === "Rejected"?true:false}>
                                         Reject
                                     </Button>
                                 </TableCell>

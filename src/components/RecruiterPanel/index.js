@@ -76,7 +76,7 @@ function RecruiterPanel(props) {
 
     return (
         <div>
-            <h1>Student Applicants List</h1>
+            <h1>Applicants List</h1>
             <TableContainer component={Paper}>
                 <Table
                     className={classes.table}

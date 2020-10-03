@@ -31,20 +31,28 @@ function Form() {
     };
 
     const handleSubmit = (event) => {
-        event.preventDefault();
-        const data = JSON.stringify(schedule);
-        console.log(data);
-        Axios.post("https://enigmatic-taiga-55528.herokuapp.com/schedule", data, {
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-            .then((result) => {
-                alert("Your interview is successfully scheduled !")
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        if (schedule.name !== "") {
+            event.preventDefault();
+            const data = JSON.stringify(schedule);
+            console.log(data);
+            Axios.post(
+                "https://enigmatic-taiga-55528.herokuapp.com/schedule",
+                data,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }
+            )
+                .then((result) => {
+                    alert("Your interview is successfully scheduled !");
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }else{
+            alert("Please Enter Name");
+        }
     };
 
     return (
@@ -85,7 +93,11 @@ function Form() {
                         variant="contained"
                         color="secondary"
                         onClick={handleSubmit}
-                        style={{marginRight: 5,backgroundColor: "black",color: "yellow"}}
+                        style={{
+                            marginRight: 5,
+                            backgroundColor: "black",
+                            color: "yellow",
+                        }}
                     >
                         Book
                     </Button>
